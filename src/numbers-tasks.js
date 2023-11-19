@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* *******************************************************************************************
  *                                                                                           *
  * Please read the following tutorial before implementing tasks:                              *
@@ -50,10 +51,11 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  if (value1 >= 0 && value2 >= 0) {
-    return (value1 + value2) / 2;
-  }
-  return null;
+  return (
+    Math.floor(value1 / 2, 10) +
+    Math.floor(value2 / 2, 10) +
+    ((value1 % 2) + (value2 % 2)) / 2
+  );
 }
 
 /**
@@ -87,9 +89,8 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(a, b) {
-  const lin = Math.sqrt(a, b);
-  return Math.round(lin);
+function getLinearEquationRoot(/* a, b */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -180,7 +181,7 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  return num / 10 ** pow;
+  return toFixed(num, pow);
 }
 
 /**
@@ -200,8 +201,18 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  if (n <= 1) {
+    return false;
+  }
+
+  for (let i = 2; i <= Math.sqrt(n); i += 1) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 /**
