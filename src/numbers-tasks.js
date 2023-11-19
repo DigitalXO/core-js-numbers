@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-bitwise */
 /* eslint-disable no-use-before-define */
 /* *******************************************************************************************
  *                                                                                           *
@@ -49,13 +51,11 @@ function getCircleCircumference(radius) {
  *   5, 5  => 5
  *  10, 0  => 5
  *  -3, 3  => 0
- */
-function getAverage(value1, value2) {
-  return (
-    Math.floor(value1 / 2, 10) +
-    Math.floor(value2 / 2, 10) +
-    ((value1 % 2) + (value2 % 2)) / 2
-  );
+// eslint-disable-next-line prettier/prettier
+*/
+
+function getAverage(/* value1, value2 */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -245,8 +245,8 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -277,8 +277,12 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let sum = 0;
+  for (let i = 0; i <= n; i += 1) {
+    sum += i;
+  }
+  return sum;
 }
 
 /**
@@ -292,8 +296,12 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  const arrayOfDigits = Array.from(String(num), Number);
+  return arrayOfDigits.reduce(
+    // eslint-disable-next-line prettier/prettier
+    (accumulator, currentValue) => accumulator + currentValue,0
+  );
 }
 
 /**
@@ -307,8 +315,19 @@ function getSumOfDigits(/* num */) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  if (num <= 0) {
+    return false;
+  }
+
+  while (num > 1) {
+    if (num % 2 !== 0) {
+      return false;
+    }
+    num /= 2;
+  }
+
+  return true;
 }
 
 /**
